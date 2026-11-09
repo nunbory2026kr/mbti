@@ -130,22 +130,20 @@ function calculateType(selected) {
   }).join("");
 }
 
-function artwork(emoji) {
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 315" aria-hidden="true">
-    <ellipse cx="215" cy="157" rx="146" ry="130" fill="#fffaf0" opacity=".6"/>
-    <ellipse cx="215" cy="157" rx="146" ry="130" fill="none" stroke="#675442" stroke-opacity=".35" stroke-width="1.5" stroke-dasharray="4 7"/>
-    <path d="M75 96q3 15 17 17-14 2-17 17-3-15-17-17 14-2 17-17Zm273 13q3 12 14 14-11 2-14 14-2-12-14-14 12-2 14-14ZM107 231q2 10 11 12-9 2-11 12-2-10-11-12 9-2 11-12Z" fill="#c69252" opacity=".8"/>
-    <use href="#hamster-art" transform="translate(65 31)"/>
-    <circle cx="326" cy="215" r="37" fill="#fff8e4" stroke="#ae9270" stroke-width="1.5"/>
-    <text x="326" y="228" font-size="39" text-anchor="middle" font-family="Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji, sans-serif">${emoji}</text>
-  </svg>`;
+function hamsterImage(type) {
+  const image = document.createElement("img");
+  image.src = "./images/" + type + ".svg";
+  image.alt = "";
+  image.width = 430;
+  image.height = 315;
+  return image;
 }
 
 function renderHamster(prefix, type) {
   const [name, emoji, tint, meme, description] = hamsters[type];
   const art = get(`${prefix}-art`);
   art.style.setProperty("--tint", tint);
-  art.innerHTML = artwork(emoji);
+  art.replaceChildren(hamsterImage(type));
   get(`${prefix}-type`).textContent = type;
   get(`${prefix}-title`).textContent = `${emoji} ${name}`;
   get(`${prefix}-meme`).textContent = meme;
@@ -175,12 +173,13 @@ function toggleGallery() {
   const myType = result.type;
   const types = [myType, ...Object.keys(hamsters).filter((type) => type !== myType)];
   get("gallery-grid").replaceChildren(...types.map((type) => {
-    const [name, emoji, tint] = hamsters[type];
+    const [name, , tint] = hamsters[type];
     const button = document.createElement("button");
     button.type = "button";
     button.className = "gallery-card";
     button.style.setProperty("--tint", tint);
-    button.innerHTML = `<span class="gallery-icon" aria-hidden="true">${emoji}</span><strong>${name}</strong><small>${type}</small>`;
+    button.innerHTML = `<strong>${name}</strong><small>${type}</small>`;
+    button.prepend(hamsterImage(type));
     if (type === myType) {
       const badge = document.createElement("span");
       badge.className = "mine";
@@ -198,15 +197,8 @@ function toggleGallery() {
   get("gallery-title").focus();
 }
 
-function loadCardArt() {
-  const svg = get("result-art").querySelector("svg").cloneNode(true);
-  svg.setAttribute("width", "430");
-  svg.setAttribute("height", "315");
-  const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
-  defs.append(get("hamster-art").cloneNode(true));
-  svg.prepend(defs);
-  const source = new XMLSerializer().serializeToString(svg);
-  const url = URL.createObjectURL(new Blob([source], { type: "image/svg+xml;charset=utf-8" }));
+function loadCardArt(type) {
+  const url = URL.createObjectURL(new Blob([shareArtwork[type]], { type: "image/svg+xml;charset=utf-8" }));
   return new Promise((resolve, reject) => {
     const img = new Image();
     img.onload = () => {
@@ -223,7 +215,7 @@ function loadCardArt() {
 
 async function makeShareCard(type) {
   const [name, , tint, meme] = hamsters[type];
-  const image = await loadCardArt();
+  const image = await loadCardArt(type);
   const canvas = document.createElement("canvas");
   canvas.width = 960;
   canvas.height = 960;
