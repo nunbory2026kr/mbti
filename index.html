@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbf8ee">
+  <meta name="description" content="햄스터 마을에서 하루를 보내고 나와 닮은 햄스터를 찾아보세요.">
+  <title>햄스터리 | 내 햄스터 찾기</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./script.js" defer></script>
+</head>
+<body>
+  <svg class="art-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <symbol id="sunflower-seed" viewBox="0 0 24 32">
+        <path d="M12 2c2.1 2.5 8.6 8.4 8.6 17 0 6.1-3.6 10.5-8.6 10.5S3.4 25.1 3.4 19c0-8.6 6.5-14.5 8.6-17Z" fill="var(--seed-shell)" stroke="var(--seed-edge)" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M10.2 8.8C7 14.5 6.8 21.1 9.3 25.3m4.5-16.5c3.2 5.7 3.4 12.3.9 16.5" fill="none" stroke="var(--seed-stripe)" stroke-width="1.6" stroke-linecap="round"/>
+      </symbol>
+      <g id="hamster-art">
+        <ellipse cx="150" cy="235" rx="104" ry="17" fill="#513725" opacity=".12"/>
+        <path d="M87 205c-22 2-26 24-9 29 12 4 35 2 41-9m91-20c22 2 26 24 9 29-12 4-35 2-41-9" fill="#eca069" stroke="#573823" stroke-width="4" stroke-linecap="round"/>
+        <path d="M73 85C46 75 42 42 61 29c16-11 38-1 45 18m89 0c9-20 31-28 46-17 18 13 14 44-13 55" fill="#e6a761" stroke="#573823" stroke-width="5" stroke-linecap="round"/>
+        <path d="M69 67c-10-10-9-22 0-26 9-4 20 3 23 12m140 14c10-10 9-22 0-26-9-4-20 3-23 12" fill="#f6bfab"/>
+        <path d="M53 154C49 91 88 46 149 45c62-1 102 45 99 109-3 53-32 78-97 78-66 0-96-26-98-78Z" fill="#eab16d" stroke="#573823" stroke-width="5"/>
+        <path d="M65 171c0-24 20-40 42-40 20 0 27 12 43 12s22-12 43-12c23 0 42 16 42 40 0 37-34 55-85 55-50 0-85-18-85-55Z" fill="#fff2d9"/>
+        <path d="M110 62c21-10 43-11 64-6" fill="none" stroke="#ffe4a9" stroke-width="5" stroke-linecap="round"/>
+        <ellipse cx="110" cy="119" rx="8" ry="11" fill="#513725"/>
+        <ellipse cx="190" cy="119" rx="8" ry="11" fill="#513725"/>
+        <circle cx="112" cy="115" r="2.5" fill="#fffaf2"/>
+        <circle cx="192" cy="115" r="2.5" fill="#fffaf2"/>
+        <ellipse cx="88" cy="144" rx="15" ry="9" fill="#eeaa98"/>
+        <ellipse cx="212" cy="144" rx="15" ry="9" fill="#eeaa98"/>
+        <path d="M143 134q7-5 14 0-1 8-7 8t-7-8Z" fill="#69432f"/>
+        <path d="M150 141q-3 11-12 6m12-6q3 11 12 6" fill="none" stroke="#69432f" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M150 165c-27-24-53 9 0 40 53-31 27-64 0-40Z" fill="#e48676" stroke="#674332" stroke-width="3.5"/>
+        <path d="M133 165q-8 0-10 8" fill="none" stroke="#ffd5c1" stroke-width="3" stroke-linecap="round"/>
+        <path d="M104 166c-7 9 1 23 16 23 13 0 13-11 6-16m70-7c7 9-1 23-16 23-13 0-13-11-6-16" fill="#f2c389" stroke="#674332" stroke-width="3" stroke-linecap="round"/>
+      </g>
+    </defs>
+  </svg>
+
+  <header class="site-header">
+    <div class="brand"><span class="brand-icon" aria-hidden="true">🐹</span> 햄스터리<span class="brand-en">HAMSTORY</span></div>
+    <span class="header-tag"><span aria-hidden="true">✦</span> 햄스터 마을 성향 테스트</span>
+  </header>
+
+  <main>
+    <section id="start-screen" class="screen" aria-labelledby="start-title">
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> 햄스터 마을에 오신 걸 환영해요</p>
+          <h1 id="start-title">내가 햄스터라면,<br><em>어떤 햄스터</em>일까?</h1>
+          <p class="intro">눈을 떠 보니 햄스터 마을!<br>마을에서 하루를 보내고 나와 닮은 햄스터를 찾아봐요.</p>
+          <button class="button primary start-button" id="start-button" type="button">내 햄스터 찾기 <span aria-hidden="true">→</span></button>
+          <p class="test-meta"><span>16문항</span><span>약 3분</span><span>16종의 햄스터</span></p>
+        </div>
+        <figure class="hero-art" aria-label="분홍 하트를 안고 햄스터 마을에 도착한 햄스터">
+          <svg viewBox="0 0 490 420" aria-hidden="true">
+            <defs>
+              <pattern id="art-dots" width="16" height="16" patternUnits="userSpaceOnUse">
+                <circle cx="3" cy="3" r="1" fill="#7a8257" opacity=".23"/>
+              </pattern>
+            </defs>
+            <rect width="490" height="420" fill="#e9edcf"/>
+            <rect width="490" height="420" fill="url(#art-dots)"/>
+            <path d="M103 337V172a142 142 0 0 1 284 0v165Z" fill="#fff3ce" stroke="#a6a779" stroke-width="1.5" stroke-dasharray="4 7"/>
+            <path d="M0 321q98-37 190 12 79-42 160-16 69-38 140-9v112H0Z" fill="#d6dfad"/>
+            <path d="M0 363q83-26 159 9 91-18 167 7 94-27 164-12v53H0Z" fill="#c8d398"/>
+            <path d="M41 316v-44l30-29 32 29v50m-68-48 36-36 38 37" fill="#f7dfae" stroke="#9a7451" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M65 320v-24a8 8 0 0 1 16 0v24" fill="#bf8f62"/>
+            <circle cx="71" cy="271" r="5" fill="#e19a82"/>
+            <path d="M386 329q-5-24-17-37m16 27q2-21 15-34m-15 36q18-9 29-3M110 362q-3-22-15-31m16 29q5-22 17-29m-17 30q-14-7-22-4" fill="none" stroke="#7c8955" stroke-width="3" stroke-linecap="round"/>
+            <g fill="#f8cb73" stroke="#ad8550" stroke-width="1.5" stroke-linejoin="round">
+              <path d="M126 102q2 16 16 18-14 3-16 18-3-15-17-18 14-2 17-18Z"/>
+              <path d="M366 163q2 12 13 14-11 2-13 14-2-12-13-14 11-2 13-14Z"/>
+              <path d="M325 61q1 10 10 11-9 2-10 11-2-9-11-11 9-1 11-11Z"/>
+            </g>
+            <g fill="#fcf1d7" stroke="#9a805b" stroke-width="1.5">
+              <path d="M57 205q-13-14-3-28 17 6 14 24-2 12-11 4Z"/>
+              <path d="M418 248q1-18 18-20 7 17-7 27-10 7-11-7Z"/>
+              <path d="M354 363q11-14 27-5-4 17-22 16-11 0-5-11Z"/>
+            </g>
+            <use href="#hamster-art" transform="translate(64 67) scale(1.2)"/>
+          </svg>
+          <figcaption><span aria-hidden="true">✿</span> 오늘의 목적지 · 햄스터 마을</figcaption>
+        </figure>
+      </div>
+      <div class="journey" aria-label="테스트 순서">
+        <div><span class="step-icon" aria-hidden="true">🌻</span><p><strong>하루 보내기</strong><small>마을에서 만나는 16가지 상황</small></p></div>
+        <div><span class="step-icon" aria-hidden="true">🐹</span><p><strong>내 햄스터 만나기</strong><small>나와 닮은 캐릭터 한 마리</small></p></div>
+        <div><span class="step-icon" aria-hidden="true">💌</span><p><strong>친구에게 보내기</strong><small>결과 카드로 햄스터 자랑하기</small></p></div>
+      </div>
+    </section>
+
+    <section id="quiz-screen" class="screen narrow" aria-labelledby="question-title" hidden>
+      <div class="progress">
+        <div class="progress-label">
+          <span class="progress-name"><svg class="seed seed-icon filled" aria-hidden="true"><use href="#sunflower-seed"></use></svg> 해바라기씨</span>
+          <span id="progress-count"></span>
+        </div>
+        <div id="seed-progress" class="seed-progress" role="progressbar" aria-label="테스트 진행률" aria-valuemin="0" aria-valuemax="16" aria-valuenow="0"></div>
+        <template id="seed-template"><svg class="seed" aria-hidden="true"><use href="#sunflower-seed"></use></svg></template>
+      </div>
+      <div class="question-card">
+        <p class="eyebrow" id="question-number"></p>
+        <h1 id="question-title" tabindex="-1"></h1>
+        <p class="question-hint">평소 나라면 할 행동을 골라주세요.</p>
+        <div class="choices" id="choices"></div>
+      </div>
+      <button class="text-button" id="back-button" type="button"><span aria-hidden="true">←</span> 이전 질문</button>
+    </section>
+
+    <section id="result-screen" class="screen result-screen" aria-labelledby="result-title" hidden>
+      <div class="result-card" id="result-card">
+        <div class="result-art" id="result-art"></div>
+        <div class="result-copy">
+          <p class="eyebrow"><span></span> 나와 닮은 햄스터는</p>
+          <span class="type-badge" id="result-type"></span>
+          <h1 id="result-title" tabindex="-1"></h1>
+          <p class="meme" id="result-meme"></p>
+          <p class="description" id="result-description"></p>
+          <div class="result-actions">
+            <button class="button primary" id="share-button" type="button"><span aria-hidden="true">↗</span> 결과 공유하기</button>
+            <button class="button secondary" id="restart-button" type="button"><span aria-hidden="true">↻</span> 다시하기</button>
+          </div>
+          <p id="share-status" class="share-status" role="status"></p>
+          <a id="save-card" class="text-button" hidden>결과 카드 PNG 저장 ↓</a>
+          <textarea id="share-text" class="share-text" readonly aria-label="공유할 결과 문구" hidden></textarea>
+        </div>
+      </div>
+      <div class="gallery-entry">
+        <p>나 말고 무슨 햄이 있지?</p>
+        <button class="text-button" id="gallery-button" type="button" aria-controls="gallery" aria-expanded="false">16종 햄스터 구경하기 <span aria-hidden="true">↓</span></button>
+      </div>
+      <section id="gallery" aria-labelledby="gallery-title" hidden>
+        <h2 id="gallery-title" tabindex="-1">햄스터 도감</h2>
+        <div id="gallery-grid" class="gallery-grid"></div>
+      </section>
+    </section>
+  </main>
+
+  <dialog id="hamster-dialog" aria-labelledby="detail-title">
+    <button class="close-button" type="button" aria-label="도감 상세 닫기">×</button>
+    <div class="result-art" id="detail-art"></div>
+    <div class="detail-copy">
+      <span class="type-badge" id="detail-type"></span>
+      <h2 id="detail-title"></h2>
+      <p class="meme" id="detail-meme"></p>
+      <p class="description" id="detail-description"></p>
+    </div>
+  </dialog>
+
+  <footer><span aria-hidden="true">✦</span> 햄스터리 <span class="footer-dot">·</span> 햄스터 마을에서 보내는 작은 하루</footer>
+  <noscript><p class="noscript">테스트를 시작하려면 브라우저에서 JavaScript를 켜 주세요.</p></noscript>
+</body>
+</html>
